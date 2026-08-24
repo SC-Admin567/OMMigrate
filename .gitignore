@@ -1,0 +1,80 @@
+# OMMigrate .gitignore
+# Keeps runtime data, test data, and OS noise out of the repository.
+# The repo contains only source code and documentation.
+# All runtime output lives in Documents\OutlookMigration\ on the operator's machine.
+
+# ── Runtime data folders ──────────────────────────────────────────────────────
+# These are created at Documents\OutlookMigration\ by the scripts.
+# They should never appear in the repo.
+Config/
+Logs/
+Manifests/
+Reports/
+Backups/
+
+# ── Outlook data files ────────────────────────────────────────────────────────
+*.pst
+*.ost
+*.nst
+
+# ── OMMigrate generated output files ─────────────────────────────────────────
+*.log
+*_Audit.log
+*_Complete.json
+*_Checkpoint.json
+*_Settings.json
+migration_accounts.csv
+folder_map.csv
+rules_inventory.csv
+Discovery_Report_*.html
+Backup_Report_*.html
+Migration_Report_*.html
+Rollback_Report_*.html
+RECOVERY.txt
+
+# ── Windows OS noise ──────────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ── PowerShell artifacts ──────────────────────────────────────────────────────
+*.pssproj
+*.psproj
+
+# ── Editor noise ──────────────────────────────────────────────────────────────
+.vscode/
+.vs/
+*.sublime-project
+*.sublime-workspace
+*.bak
+*~
+
+# ── Obsidian noise ────────────────────────────────────────────────────────────
+# workspace.json/workspace-mobile.json record per-session UI state (open tabs,
+# pane layout, scroll position) and change every time a .md file is viewed in
+# Obsidian -- not project data, no value to anyone else cloning the repo.
+# app.json/appearance.json are per-user app preferences (theme, font, CSS
+# snippets, general app settings) -- an operator who installs the Obsidian
+# Add-on and customizes their view should never have those personal
+# preferences silently overwritten by a future repo update, nor show as
+# permanent uncommitted changes. Administrator's explicit direction (2026-08-18):
+# don't let a tracked file capture something a user customizes locally.
+# community-plugins.json/core-plugins.json are intentionally left tracked --
+# they define which plugins/features are enabled at all (e.g. html-viewer-
+# plus, bundled specifically so the donate button renders), not a per-user
+# cosmetic preference within an already-enabled feature.
+# The rest of .obsidian/ (the bundled vault config, HTML Viewer Plus plugin,
+# etc.) IS intentionally tracked -- see Install.ps1's FilesToDownload list.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.obsidian/app.json
+.obsidian/appearance.json
+
+# ── Temp files ────────────────────────────────────────────────────────────────
+*.tmp
+*.temp
+
+# ── Git placeholders no longer needed ────────────────────────────────────────
+.gitkeep

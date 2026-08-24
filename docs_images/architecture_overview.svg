@@ -1,0 +1,96 @@
+<svg width="680" height="640" viewBox="0 0 680 640" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>OMMigrate pipeline architecture</title>
+<desc>Five sequential scripts, each gated on the previous script's completion manifest, reading and writing shared control files, producing an Archive PST, IMAP server state, HTML reports, and interoperating with Outlook VBA macros.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<style>
+text { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; fill: #2C2C2A; }
+.th { font-size: 14px; font-weight: 500; }
+.ts { font-size: 12px; fill: #5F5E5A; }
+.box { fill: #FFFFFF; stroke: #888780; stroke-width: 0.5; }
+.teal { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 0.5; }
+.teal text.th { fill: #085041; }
+.teal text.ts { fill: #0F6E56; }
+.purple { fill: #EEEDFE; stroke: #534AB7; stroke-width: 0.5; }
+.purple text.th { fill: #3C3489; }
+.purple text.ts { fill: #534AB7; }
+.amber { fill: #FAEEDA; stroke: #854F0B; stroke-width: 0.5; }
+.amber text.th { fill: #633806; }
+.amber text.ts { fill: #854F0B; }
+.coral { fill: #FAECE7; stroke: #993C1D; stroke-width: 0.5; }
+.coral text.th { fill: #712B13; }
+.coral text.ts { fill: #993C1D; }
+.gray { fill: #F1EFE8; stroke: #888780; stroke-width: 0.5; }
+.arr { stroke: #5F5E5A; stroke-width: 0.5; fill: none; }
+</style>
+
+<rect x="20" y="20" width="150" height="44" rx="8" class="gray"/>
+<text class="th" x="95" y="46" text-anchor="middle">Outlook profile</text>
+
+<rect x="20" y="100" width="150" height="56" rx="8" class="teal"/>
+<text class="th" x="95" y="122" text-anchor="middle">Script 00 Discover</text>
+<text class="ts" x="95" y="140" text-anchor="middle">Read-only scan</text>
+<line x1="95" y1="64" x2="95" y2="98" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="240" y="100" width="180" height="56" rx="8" class="gray"/>
+<text class="th" x="330" y="122" text-anchor="middle">Control CSVs</text>
+<text class="ts" x="330" y="140" text-anchor="middle">accounts, folders, rules</text>
+<line x1="170" y1="128" x2="238" y2="128" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="470" y="100" width="190" height="56" rx="8" class="purple"/>
+<text class="th" x="565" y="122" text-anchor="middle">Step00_Complete.json</text>
+<text class="ts" x="565" y="140" text-anchor="middle">Hard gate for next script</text>
+<line x1="420" y1="128" x2="468" y2="128" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="20" y="200" width="150" height="56" rx="8" class="teal"/>
+<text class="th" x="95" y="222" text-anchor="middle">Script 01 Backup</text>
+<text class="ts" x="95" y="240" text-anchor="middle">PST export + verify</text>
+<path d="M565 156 L565 178 L95 178 L95 198" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="20" y="300" width="150" height="56" rx="8" class="teal"/>
+<text class="th" x="95" y="322" text-anchor="middle">Script 02 Convert</text>
+<text class="ts" x="95" y="340" text-anchor="middle">POP3 to IMAP</text>
+<line x1="95" y1="256" x2="95" y2="298" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="20" y="400" width="150" height="56" rx="8" class="teal"/>
+<text class="th" x="95" y="422" text-anchor="middle">Script 03 Restore</text>
+<text class="ts" x="95" y="440" text-anchor="middle">Folders + rules</text>
+<line x1="95" y1="356" x2="95" y2="398" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="20" y="500" width="150" height="56" rx="8" class="teal"/>
+<text class="th" x="95" y="522" text-anchor="middle">Script 04 Artifacts</text>
+<text class="ts" x="95" y="540" text-anchor="middle">Calendar, contacts</text>
+<line x1="95" y1="456" x2="95" y2="498" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="240" y="380" width="180" height="56" rx="8" class="amber"/>
+<text class="th" x="330" y="402" text-anchor="middle">Archive PST(s)</text>
+<text class="ts" x="330" y="420" text-anchor="middle">Local-only folders</text>
+<line x1="170" y1="420" x2="238" y2="408" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="240" y="450" width="180" height="56" rx="8" class="amber"/>
+<text class="th" x="330" y="472" text-anchor="middle">IMAP server</text>
+<text class="ts" x="330" y="490" text-anchor="middle">Server-visible folders</text>
+<line x1="170" y1="432" x2="238" y2="470" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="470" y="300" width="190" height="56" rx="8" class="gray"/>
+<text class="th" x="565" y="322" text-anchor="middle">HTML reports + logs</text>
+<text class="ts" x="565" y="340" text-anchor="middle">One per script run</text>
+<path d="M170 328 L565 328 L565 298" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="470" y="400" width="190" height="56" rx="8" class="coral"/>
+<text class="th" x="565" y="422" text-anchor="middle">Outlook VBA macros</text>
+<text class="ts" x="565" y="440" text-anchor="middle">Rules engine parity</text>
+<line x1="420" y1="428" x2="468" y2="428" class="arr" marker-end="url(#arrow)"/>
+
+<rect x="20" y="590" width="14" height="14" rx="3" class="teal"/>
+<text class="ts" x="40" y="601">Pipeline script</text>
+<rect x="160" y="590" width="14" height="14" rx="3" class="purple"/>
+<text class="ts" x="180" y="601">Gate manifest</text>
+<rect x="290" y="590" width="14" height="14" rx="3" class="amber"/>
+<text class="ts" x="310" y="601">Migration output</text>
+<rect x="430" y="590" width="14" height="14" rx="3" class="coral"/>
+<text class="ts" x="450" y="601">VBA macro</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+	"id": "html-viewer-plus",
+	"name": "HTML Viewer Plus",
+	"version": "1.0.1",
+	"minAppVersion": "1.0.0",
+	"description": "Enhanced HTML viewer with embed previews, fullscreen, zoom, dark theme sync, search, MHTML support, and hot refresh.",
+	"author": "lzq",
+	"isDesktopOnly": true
+}

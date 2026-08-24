@@ -1,0 +1,115 @@
+name: Bug Report
+description: Report a problem running OMMigrate
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! The more detail you
+        provide, the faster this can be tracked down. See CONTRIBUTING.md
+        for general guidelines.
+
+  - type: input
+    id: windows-version
+    attributes:
+      label: Windows version
+      description: Settings -> System -> About
+      placeholder: "e.g. Windows 11 23H2"
+    validations:
+      required: true
+
+  - type: input
+    id: outlook-version
+    attributes:
+      label: Outlook version
+      description: Outlook -> File -> Office Account
+      placeholder: "e.g. Outlook 2021, Microsoft 365"
+    validations:
+      required: true
+
+  - type: input
+    id: powershell-version
+    attributes:
+      label: PowerShell version
+      description: Run `$PSVersionTable.PSVersion` and paste the result
+      placeholder: "e.g. 5.1.19041.4894"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: account-type
+    attributes:
+      label: Account type involved
+      description: The ProviderTag or account type this issue affects, if known
+      options:
+        - POP3 - standard mail server
+        - POP3 - AT&T/Yahoo legacy domain
+        - POP3 - AWS SES outbound
+        - POP3 - Gmail
+        - IMAP - already IMAP
+        - Microsoft Exchange
+        - Not sure / not account-specific
+    validations:
+      required: true
+
+  - type: dropdown
+    id: script
+    attributes:
+      label: Which script or tool
+      options:
+        - Install.ps1
+        - Script 00 - Discover
+        - Script 01 - Backup
+        - Script 02 - Convert
+        - Script 03 - Restore
+        - Script 04 - Artifacts
+        - A Utilities script
+        - An Outlook VBA macro
+        - Not sure / general question
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the problem, and what you expected instead
+      placeholder: Tell us what happened
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What did you run, and in what order?
+      placeholder: |
+        1. Ran Script 00 with ...
+        2. Then ran Script 01 ...
+        3. Error appeared when ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: |
+        Paste relevant excerpts from Documents\OutlookMigration\Logs\.
+        Please remove or replace any personal email addresses, names, or
+        server names before pasting.
+      render: shell
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reproducible
+    attributes:
+      label: Reproducible on re-run?
+      options:
+        - "Yes, happens every time"
+        - "Sometimes"
+        - "No, only happened once"
+        - "Haven't tried again"
+    validations:
+      required: false

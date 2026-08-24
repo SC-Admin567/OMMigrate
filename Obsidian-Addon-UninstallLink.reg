@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; 1. Delete the custom file type class
+[-HKEY_CLASSES_ROOT\ObsidianVaultMarkdown]
+
+; 2. Reset the system-wide extension back to default text file
+[HKEY_CLASSES_ROOT\.md]
+@="txtfile"
+
+; 3. Remove user-level overrides to ensure the reset takes effect immediately
+[-HKEY_CURRENT_USER\Software\Classes\ObsidianVaultMarkdown]
+[-HKEY_CURRENT_USER\Software\Classes\.md]
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.md\UserChoice]

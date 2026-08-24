@@ -1,0 +1,15 @@
+{
+  "language": "en",
+  "defaultWidth": "100%",
+  "aspectRatio": "4/3",
+  "showToolbar": true,
+  "enableZoom": true,
+  "zoomStep": 0.1,
+  "syncDarkTheme": true,
+  "customDarkCSS": "",
+  "enableSearch": true,
+  "bgColor": "#ffffff",
+  "bgColorEnabled": false,
+  "hotRefresh": false,
+  "mhtmlSupport": true
+}
